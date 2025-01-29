@@ -1,1 +1,10 @@
-<router-outlet />
+<!-- <app-header (toggleSidenav)="sidenav.toggle()" [isMobile]="isMobile()" /> -->
+<mat-sidenav-container class="flex-1">
+  <mat-sidenav #sidenav [mode]="isMobile() ? 'over' : 'side'" [fixedInViewport]="isMobile()"
+    fixedTopGap="56" [opened]="!isMobile()" class="p-4">
+    <!-- <app-sidenav (navigate)="sidenav.close()" /> -->
+  </mat-sidenav>
+  <mat-sidenav-content class="p-4">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

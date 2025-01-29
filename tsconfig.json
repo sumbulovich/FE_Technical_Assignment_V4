@@ -25,7 +25,12 @@
     "paths": {
 			"@app/*": ["./src/app/*"],
       "@env/*": ["./src/environments/*"]
-		}
+		},
+  "typeRoots": [
+      "node_modules/@types",
+      "node_modules/@angular/material",
+      "node_modules/@angular/core"
+    ],
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
