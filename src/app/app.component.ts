@@ -5,11 +5,10 @@ import { ProductsService } from './shared/services/products.service';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, MatSidenavModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    imports: [RouterOutlet, MatSidenavModule],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
   breakpointService = inject(BreakpointService);
