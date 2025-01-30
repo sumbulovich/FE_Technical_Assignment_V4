@@ -56,5 +56,31 @@ export const PRODUCT_QUERIES = {
       total
     }
   }
+  `,
+  GET_PRODUCT: `
+  query ($_id: ID!) {
+    getProduct(_id: $_id) {
+      _id
+      category {
+        _id
+        title
+      }
+      description
+      image {
+        _id
+        caption
+        credit
+        description
+        filename
+        mimeType
+        path
+        sourceUrl
+        title
+        uploadStatus
+      }
+      name
+      price
+    }
+  }
   `
 }

@@ -1,11 +1,17 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { computed, inject, Injectable, Signal, signal, WritableSignal } from '@angular/core';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BreakpointService {
   private breakpointObserver = inject(BreakpointObserver);
   breakpoint: WritableSignal<string> = signal<string>(Breakpoints.Medium);
   isMobile: Signal<boolean> = computed(() => this.breakpoint() === Breakpoints.XSmall || this.breakpoint() === Breakpoints.Small);
+
+  constructor() {
+    this.observeBreakpoints();
+  }
 
   observeBreakpoints() {
     this.breakpointObserver.observe([

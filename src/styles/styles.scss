@@ -1,75 +1,28 @@
-@use '@angular/material' as mat;
-@import './m3-theme';
-
-// Import CDK overlay styles
-@import '@angular/cdk/overlay-prebuilt.css';
-
-@include mat.elevation-classes();
-@include mat.app-background();
-
-$light-theme: mat.define-light-theme((
-  color: (
-    theme-type: light,
-    primary: $_primary,
-    accent: $_primary,
-    tertiary: $_tertiary,
-  ),
-  typography: (
-    brand-family: #{"Roboto, sans-serif"},
-    plain-family: #{"Roboto, sans-serif"},
-    bold-weight: 300,
-    medium-weight: 200,
-    regular-weight: 100,
-  ),
-  density: (
-    scale: 0
-  )
-));
-$dark-theme: mat.define-dark-theme((
-  color: (
-    theme-type: dark,
-    primary: $_primary,
-    accent: $_primary,
-    tertiary: $_tertiary
-  ),
-  typography: (
-    brand-family: #{"Roboto, sans-serif"},
-    plain-family: #{"Roboto, sans-serif"},
-    bold-weight: 300,
-    medium-weight: 200,
-    regular-weight: 100,
-  ),
-  density: (
-    scale: 0
-  )
-));
+@use "@angular/material" as mat;
+@use "./_theme-colors" as colors;
 
 html {
-  // Apply the dark theme by default
-  @include mat.all-component-themes($dark-theme);
-  @include mat.all-component-typographies($base-theme);
-  @include mat.all-component-densities($base-theme);
-  // @include mat.color-variants-backwards-compatibility(m3-theme.$dark-theme);
-  @include mat.typography-hierarchy($base-theme);
+  color-scheme: light;
+  @include mat.theme(
+    (
+      color: (
+        primary: colors.$primary-palette,
+        tertiary: colors.$tertiary-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
 
-  // Apply the light theme only when the user prefers light themes.
-  @media (prefers-color-scheme: light) {
-    // Use the `-color` mixins to only apply color styles without reapplying the same
-    // typography and density styles.
-    &:not([dark-theme]) {
-      @include mat.all-component-colors($light-theme);
-      // @include mat.color-variants-backwards-compatibility(m3-theme.$light-theme);
-    }
+  &.dark {
+    color-scheme: dark;
   }
+}
 
-  // The density system is based on a density scale. The scale starts with the default density of 0.
-  // Each whole number step down (-1, -2, etc.) reduces the affected sizes by 4dp, down to the minimum
-  // size necessary for a component to render coherently.
-  @for $i from 0 through 5 {
-    .small-#{$i} {
-      @include mat.all-component-densities(-$i);
-    }
-  }
+body {
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
 
-  @import './components';
+  --mat-sidenav-container-width: 200px;
+  --mat-sidenav-container-shape: 0;
 }
