@@ -45,7 +45,10 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles/styles.scss", "src/styles.scss"],
+            "styles": [
+              "src/styles/styles.scss",
+              "src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -99,11 +102,28 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles/styles.scss", "src/styles.scss"],
+            "styles": [
+              "src/styles/styles.scss",
+              "src/styles.scss"
+            ],
             "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }

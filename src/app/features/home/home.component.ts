@@ -2,6 +2,7 @@ import {
   Component,
   DestroyRef,
   inject,
+  OnInit,
   output,
   OutputEmitterRef,
   signal,
@@ -32,7 +33,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
   private productsService = inject(ProductsService);
   private breakpointService = inject(BreakpointService);
