@@ -1,5 +1,9 @@
 @if (!isLoading()) {
-<app-product-grid [products]="products()"></app-product-grid>
+  <app-product-grid [products]="products()"></app-product-grid>
 } @else {
-<mat-spinner class="m-auto" diameter="60" class="float-center opacity-50"></mat-spinner>
+  <mat-spinner
+    class="m-auto"
+    diameter="60"
+    class="float-center opacity-50"
+  ></mat-spinner>
 }

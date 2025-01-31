@@ -1,8 +1,15 @@
 <mat-nav-list>
   @for (category of categories(); track category._id) {
-  <a mat-list-item [activated]="rla.isActive" [routerLink]="[category.title]" routerLinkActive #rla="routerLinkActive"
-    class="mb-1" (click)="navigate.emit()">
-    {{ category.title }}
-  </a>
+    <a
+      mat-list-item
+      [activated]="rla.isActive"
+      [routerLink]="[category.title]"
+      routerLinkActive
+      #rla="routerLinkActive"
+      class="mb-1"
+      (click)="navigate.emit()"
+    >
+      {{ category.title }}
+    </a>
   }
 </mat-nav-list>

@@ -3,7 +3,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './core/layout/components/header/header.component';
 import { BreakpointService } from './core/layout/services/breakpoint.service';
-import { SidenavComponent } from "./core/layout/components/sidenav/sidenav.component";
+import { SidenavComponent } from './core/layout/components/sidenav/sidenav.component';
 
 @Component({
   selector: 'app-root',

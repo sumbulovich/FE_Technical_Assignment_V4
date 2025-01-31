@@ -9,10 +9,9 @@ import { environment } from '@env/environment';
   selector: 'app-product-card',
   imports: [RouterModule, MatCardModule, CurrencyPipe],
   templateUrl: './product-card.component.html',
-  styleUrl: './product-card.component.scss'
+  styleUrl: './product-card.component.scss',
 })
 export class ProductCardComponent {
   product: InputSignal<Product> = input.required<Product>();
   imagePath: string = environment.ImgPath;
-
 }

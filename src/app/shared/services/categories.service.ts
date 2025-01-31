@@ -6,7 +6,7 @@ import { CATEGORIES_QUERIES } from '../graphql/categories.queries';
 import { Category } from '../models/category.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CategoriesService {
   private httpService: HttpService = inject(HttpService);
@@ -14,7 +14,8 @@ export class CategoriesService {
 
   getCategories(): Observable<Category[]> {
     const query = CATEGORIES_QUERIES.GET_CATEGORIES;
-    return this.httpService.post<any>(`${this.url}`, { query })
-      .pipe(map((response) => response.data.getCategoryList.items))
+    return this.httpService
+      .post<any>(`${this.url}`, { query })
+      .pipe(map((response) => response.data.getCategoryList.items));
   }
 }

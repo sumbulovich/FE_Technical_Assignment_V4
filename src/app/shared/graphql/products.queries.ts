@@ -82,5 +82,5 @@ export const PRODUCT_QUERIES = {
       price
     }
   }
-  `
-}
+  `,
+};

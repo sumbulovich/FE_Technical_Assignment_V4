@@ -1,9 +1,12 @@
-<mat-toolbar class="flex flex-row justify-between border-b-1 border-gray-200! dark:border-gray-800!" color="primary">
+<mat-toolbar
+  class="flex flex-row justify-between border-b-1 border-gray-200! dark:border-gray-800!"
+  color="primary"
+>
   <div class="flex flex-row items-center">
     @if (isMobile()) {
-    <button mat-icon-button (click)="toggleSidenav.emit()" class="mr-1">
-      <mat-icon>menu</mat-icon>
-    </button>
+      <button mat-icon-button (click)="toggleSidenav.emit()" class="mr-1">
+        <mat-icon>menu</mat-icon>
+      </button>
     }
     <a routerLink="/" class="text-lg font-bold">THE MILL SHOP</a>
   </div>

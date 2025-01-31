@@ -9,5 +9,5 @@ export const CATEGORIES_QUERIES = {
       total
     }
   }
-  `
-}
+  `,
+};

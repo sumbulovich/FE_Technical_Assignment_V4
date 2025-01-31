@@ -1,13 +1,47 @@
 @if (!isLoading()) {
-<mat-toolbar class="mb-6!">
-  <mat-nav-list class="flex! flex-row w-full justify-center">
-    @for (categoryEntry of categoriesCount() | keyvalue; track categoryEntry.key) {
-    <a mat-list-item [routerLink]="categoryEntry.key" class="text-center w-auto!">{{categoryEntry.key}}
-      ({{categoryEntry.value}})</a>
-    }
-  </mat-nav-list>
-</mat-toolbar>
-<app-product-grid [products]="products()"></app-product-grid>
+  @if (!isMobile()) {
+    <mat-toolbar class="mb-6!">
+      <mat-nav-list class="flex! flex-row w-full justify-center">
+        @for (
+          categoryEntry of categoriesCount() | keyvalue;
+          track categoryEntry.key
+        ) {
+          <a
+            mat-list-item
+            [routerLink]="categoryEntry.key"
+            class="text-center w-auto!"
+            >{{ categoryEntry.key }} ({{ categoryEntry.value }})</a
+          >
+        }
+      </mat-nav-list>
+    </mat-toolbar>
+  } @else {
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Categories </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          @for (
+            categoryEntry of categoriesCount() | keyvalue;
+            track categoryEntry.key
+          ) {
+            <a
+              mat-list-item
+              [routerLink]="categoryEntry.key"
+              class="text-center w-auto!"
+              >{{ categoryEntry.key }} ({{ categoryEntry.value }})</a
+            >
+          }
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  }
+  <app-product-grid [products]="products()"></app-product-grid>
 } @else {
-<mat-spinner class="m-auto" diameter="60" class="float-center opacity-50"></mat-spinner>
+  <mat-spinner
+    class="m-auto"
+    diameter="60"
+    class="float-center opacity-50"
+  ></mat-spinner>
 }
