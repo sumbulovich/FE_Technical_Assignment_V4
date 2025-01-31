@@ -4,7 +4,7 @@
     fixedTopGap="56" [opened]="!isMobile()" class="p-4">
     <app-sidenav (navigate)="isMobile() && sidenav.close()" />
   </mat-sidenav>
-  <mat-sidenav-content class="p-4">
+  <mat-sidenav-content class="p-5">
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

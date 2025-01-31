@@ -1,11 +1,11 @@
-<mat-toolbar class="flex flex-row justify-between _header" color="primary">
+<mat-toolbar class="flex flex-row justify-between border-b-1 border-gray-200! dark:border-gray-800!" color="primary">
   <div class="flex flex-row items-center">
     @if (isMobile()) {
     <button mat-icon-button (click)="toggleSidenav.emit()" class="mr-1">
       <mat-icon>menu</mat-icon>
     </button>
     }
-    <span>Angular 18</span>
+    <a routerLink="/" class="text-lg font-bold">THE MILL SHOP</a>
   </div>
   <div class="flex flex-row items-center gap-3">
     <app-theme-toggle />

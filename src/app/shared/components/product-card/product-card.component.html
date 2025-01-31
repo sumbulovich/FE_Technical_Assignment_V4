@@ -1,0 +1,8 @@
+<mat-card appearance="raised" [routerLink]="['/', product().category.title, product()._id]"
+  class="bg-primary cursor-pointer hover:!bg-black/[0.08] hover:dark:!bg-white/[0.08] h-full">
+  <img mat-card-image [src]="imagePath + product().image?.path" [alt]="product().image?.title || product.name">
+  <mat-card-content class="flex! flex-col h-full">
+    <p class="my-2 flex-grow">{{ product().name }}</p>
+    <p class="font-bold">{{ product().price | currency }}</p>
+  </mat-card-content>
+</mat-card>

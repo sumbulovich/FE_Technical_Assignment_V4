@@ -1,8 +1,8 @@
 <mat-nav-list>
-  @for (categoryCount of categoriesCount() | keyvalue; track categoryCount.key) {
-  <a mat-list-item [activated]="rla.isActive" [routerLink]="[categoryCount.key]" routerLinkActive #rla="routerLinkActive"
+  @for (category of categories(); track category._id) {
+  <a mat-list-item [activated]="rla.isActive" [routerLink]="[category.title]" routerLinkActive #rla="routerLinkActive"
     class="mb-1" (click)="navigate.emit()">
-    {{ categoryCount.key }} ({{ categoryCount.value }})
+    {{ category.title }}
   </a>
   }
 </mat-nav-list>

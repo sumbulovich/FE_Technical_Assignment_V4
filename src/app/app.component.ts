@@ -12,6 +12,6 @@ import { SidenavComponent } from "./core/layout/components/sidenav/sidenav.compo
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  breakpointService = inject(BreakpointService);
+  private breakpointService = inject(BreakpointService);
   isMobile = this.breakpointService.isMobile;
 }

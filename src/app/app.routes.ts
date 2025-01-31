@@ -1,4 +1,3 @@
-import { ProductViewComponent } from './features/product-view/product-view.component';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
@@ -12,7 +11,7 @@ export const routes: Routes = [
     loadComponent: () => import('./features/product-list/product-list.component').then(m => m.ProductListComponent),
   },
   {
-    path: 'product/:productId',
+    path: ':category/:productId',
     loadComponent: () => import('./features/product-view/product-view.component').then(m => m.ProductViewComponent),
   }
 ];

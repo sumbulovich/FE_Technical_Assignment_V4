@@ -29,8 +29,8 @@ export const PRODUCT_QUERIES = {
   }
   `,
   GET_PRODUCTS_BY_CATEGORY: `
-  query getProductsByCategory($where: TSWhereProductInput!){
-    getProductList(where: $where) {
+  query getProductsByCategory($size: Int, $where: TSWhereProductInput!){
+    getProductList(size: $size, where: $where) {
       items {
         _id
         category {

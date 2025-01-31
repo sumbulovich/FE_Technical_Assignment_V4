@@ -2,6 +2,8 @@ import { RouterModule } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
 import { Component, input, InputSignal } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { Product } from '@app/shared/models/product.model';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'app-product-card',
@@ -10,5 +12,7 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './product-card.component.scss'
 })
 export class ProductCardComponent {
-  product: InputSignal<any> = input.required<any>();
+  product: InputSignal<Product> = input.required<Product>();
+  imagePath: string = environment.ImgPath;
+
 }

@@ -1,3 +1,4 @@
+import { CategoriesService } from './../../../../shared/services/categories.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ProductsService } from './../../../../shared/services/products.service';
 import { Component, DestroyRef, inject, OnInit, output, OutputEmitterRef, signal, WritableSignal } from '@angular/core';
@@ -5,6 +6,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
 import { KeyValuePipe } from '@angular/common';
+import { Product } from '@app/shared/models/product.model';
+import { Category } from '@app/shared/models/category.model';
 
 @Component({
   selector: 'app-sidenav',
@@ -15,25 +18,13 @@ import { KeyValuePipe } from '@angular/common';
 })
 export class SidenavComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
-  private productsService = inject(ProductsService);
+  private categoriesService = inject(CategoriesService);
   navigate: OutputEmitterRef<void> = output<void>();
-  categoriesCount: WritableSignal<Record<string, number>> = signal<Record<string, number>>({});
+  categories: WritableSignal<Category[]> = signal<Category[]>([]);
 
   ngOnInit(): void {
-    this.productsService.getProducts().pipe(takeUntilDestroyed(this.destroyRef)).subscribe((products) => {
-      this.categoriesCount.set(this.getCategoriesWithCounts(products));
+    this.categoriesService.getCategories().pipe(takeUntilDestroyed(this.destroyRef)).subscribe((categories) => {
+      this.categories.set(categories.sort((a, b) => a.title.localeCompare(b.title)));
     });
-  }
-
-  private getCategoriesWithCounts(products: any[]): Record<string, number> {
-    const categoryCounts: Record<string, number> = {};
-
-    products.forEach(product => {
-      const category = product.category.title;
-      if (categoryCounts[category]) categoryCounts[category]++;
-      else categoryCounts[category] = 1;
-    });
-
-    return categoryCounts
   }
 }
