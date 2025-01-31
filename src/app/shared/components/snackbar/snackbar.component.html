@@ -1,0 +1,29 @@
+<div
+  matSnackBarLabel
+  [ngClass]="{
+    'border-l-4 border-solid': data?.type,
+    'border-red-500': data?.type === 'error',
+    'border-blue-500': data?.type === 'info',
+    'border-green-500': data?.type === 'success'
+  }"
+  class="flex justify-between items-center"
+>
+  <div>
+    @if (data?.title; as title) {
+      <p [innerHTML]="title" class="font-bold"></p>
+    }
+    @if (data?.message; as message) {
+      <div [innerHTML]="data?.message"></div>
+    }
+  </div>
+  <div matSnackBarActions>
+    <button
+      mat-icon-button
+      matSnackBarAction
+      (click)="snackBarRef.dismissWithAction()"
+      class="text-gray-400! dark:text-gray-500!"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>

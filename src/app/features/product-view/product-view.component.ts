@@ -14,12 +14,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouterModule } from '@angular/router';
+import { SnackbarComponent } from '@app/shared/components/snackbar/snackbar.component';
 import { Product } from '@app/shared/models/product.model';
+import { environment } from '@env/environment';
+import { CountdownComponent } from '../../shared/components/countdown/countdown.component';
 import { ProductGridComponent } from '../../shared/components/product-grid/product-grid.component';
 import { ProductsService } from './../../shared/services/products.service';
-import { CountdownComponent } from '../../shared/components/countdown/countdown.component';
-import { environment } from '@env/environment';
+import { SnackbarData } from '@app/shared/models/snackbar-data.model';
 
 @Component({
   imports: [
@@ -38,6 +41,7 @@ import { environment } from '@env/environment';
 export class ProductViewComponent {
   private destroyRef = inject(DestroyRef);
   private productsService = inject(ProductsService);
+  private snackBar = inject(MatSnackBar);
   productId: InputSignal<string> = input.required<string>();
   category: InputSignal<string> = input.required<string>();
   product: WritableSignal<Product | null> = signal<Product | null>(null);
@@ -61,6 +65,15 @@ export class ProductViewComponent {
         .subscribe((products) => {
           this.products.set(products);
         });
+    });
+  }
+
+  addToCart(): void {
+    this.snackBar.openFromComponent(SnackbarComponent, {
+      duration: 2000,
+      horizontalPosition: 'end',
+      verticalPosition: 'top',
+      data: { type: 'success', message: 'Product added to cart' }as SnackbarData,
     });
   }
 }

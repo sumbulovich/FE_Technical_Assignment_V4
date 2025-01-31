@@ -1,7 +1,6 @@
 import {
   ApplicationConfig,
   provideExperimentalZonelessChangeDetection,
-  provideZoneChangeDetection,
 } from '@angular/core';
 import {
   provideRouter,
@@ -16,6 +15,8 @@ import {
   withInterceptors,
 } from '@angular/common/http';
 import { authInterceptor } from './core/http/interceptors/auth.interceptor';
+import { errorInterceptor } from './core/http/interceptors/error.interceptor';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -25,6 +26,10 @@ export const appConfig: ApplicationConfig = {
       withComponentInputBinding(),
       withRouterConfig({ paramsInheritanceStrategy: 'always' }),
     ),
-    provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
+    provideHttpClient(
+      withFetch(),
+      withInterceptors([authInterceptor, errorInterceptor]),
+    ),
+    provideAnimationsAsync(),
   ],
 };
