@@ -1,0 +1,7 @@
+mat-card:hover {
+  // Apply same opacity as list items
+  // $opacity: calc(100% * var(--mat-sys-hover-state-layer-opacity));
+  // background-color: color-mix(in srgb, var(--mat-sys-on-surface) $opacity, transparent);
+
+  background-color: var(--mat-sys-primary-container);
+}

@@ -1,0 +1,9 @@
+@use '@angular/material' as mat;
+
+:host  {
+  @include mat.list-overrides(
+    (
+      active-indicator-shape: 0px,
+    )
+  );
+}

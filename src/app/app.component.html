@@ -6,7 +6,6 @@
     [fixedInViewport]="isMobile()"
     fixedTopGap="56"
     [opened]="!isMobile()"
-    class="p-4"
   >
     <app-sidenav (navigate)="isMobile() && sidenav.close()" />
   </mat-sidenav>
